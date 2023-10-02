@@ -2,17 +2,17 @@ package com.devsuperior.dscommerce.dto;
 
 import com.devsuperior.dscommerce.entities.User;
 
-public class ClienteDTO {
+public class ClientDTO {
 
 	private Long id;
 	private String name;
 	
-	public ClienteDTO(Long id, String name) {
+	public ClientDTO(Long id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 	
-	public ClienteDTO(User entity) {
+	public ClientDTO(User entity) {
 		id = entity.getId();
 		name = entity.getName();
 	}

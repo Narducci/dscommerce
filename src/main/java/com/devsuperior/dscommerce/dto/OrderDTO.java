@@ -13,44 +13,45 @@ import jakarta.validation.constraints.NotEmpty;
 public class OrderDTO {
 
 	private Long id;
-	private Instant momment;
+	private Instant moment;
 	private OrderStatus status;
 	
-	private ClienteDTO client;
+	private ClientDTO client;
 	
 	private PaymentDTO payment;
 	
 	@NotEmpty(message = "Deve ter pelo menos um item")
 	private List<OrderItemDTO> items = new ArrayList<>();
 	
-	public OrderDTO(Long id, Instant momment, OrderStatus status, ClienteDTO client, PaymentDTO payment) {
+	public OrderDTO(Long id, Instant momment, OrderStatus status, ClientDTO client, PaymentDTO payment) {
 		this.id = id;
-		this.momment = momment;
+		this.moment = momment;
 		this.status = status;
 		this.client = client;
 		this.payment = payment;
 	}
 	public OrderDTO(Order entity) {
 		id = entity.getId();
-		momment = entity.getMoment();
+		moment = entity.getMoment();
 		status = entity.getStatus();
-		client = new ClienteDTO(entity.getClient());
+		client = new ClientDTO(entity.getClient());
 		payment = (entity.getPayment() == null) ? null : new PaymentDTO(entity.getPayment());
 		for (OrderItem item : entity.getItems()) {
 			OrderItemDTO itemDto = new OrderItemDTO(item);
 			items.add(itemDto);
 		}
 	}
+
 	public Long getId() {
 		return id;
 	}
-	public Instant getMomment() {
-		return momment;
+	public Instant getMoment() {
+		return moment;
 	}
 	public OrderStatus getStatus() {
 		return status;
 	}
-	public ClienteDTO getClient() {
+	public ClientDTO getClient() {
 		return client;
 	}
 	public PaymentDTO getPayment() {

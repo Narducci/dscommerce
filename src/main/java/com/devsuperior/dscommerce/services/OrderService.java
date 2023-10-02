@@ -52,15 +52,7 @@ public class OrderService {
     	order.setClient(user);
     	
     	for (OrderItemDTO itemDto : dto.getItems()) {
-    		/*
-    		 * Product product = productRepository.getReferenceById(itemDto.getId()); 
-    		 * não localizou .getProductId()
-    		 * ISSO PODERÁ RESULTAR EM ERRO FUTURO. Vide OrderItemDTO, o último método implementado
-    		 * 	public Long getProducId() {
-			 *		return id;
-			 *  }
-    		 */
-    		Product product = productRepository.getReferenceById(itemDto.getProducId());
+    		Product product = productRepository.getReferenceById(itemDto.getProductId());
     		
     		OrderItem item = new OrderItem(order, product, itemDto.getQuantity(), product.getPrice());
     		order.getItems().add(item);
