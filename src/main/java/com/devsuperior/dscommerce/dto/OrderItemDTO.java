@@ -42,4 +42,11 @@ public class OrderItemDTO {
 	public Double getSubTotal() {
 		return price * quantity;
 	}
+
+	/* MÉTODO ACRESCENTADO PARA RESOLVER O OrderServuce.java na LINHA 56
+	 * PORQUE NÃO ESTAVA RETORNANDO .getReferenceById(itemDto.getProducId())
+	 * É provável que isso resultará em um erro futuro...*/
+	public Long getProducId() {
+		return id;
+	}
 }
